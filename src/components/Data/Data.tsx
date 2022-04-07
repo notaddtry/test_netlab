@@ -26,7 +26,7 @@ const Data = () => {
               </span>
               <span className={styles.infoItem}>
                 <strong>Тема:</strong>
-                {theme}
+                {theme.label}
               </span>
             </div>
           </div>

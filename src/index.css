@@ -33,6 +33,10 @@ code {
   display: none;
 }
 
+.noShow {
+  opacity: 0 !important;
+}
+
 .form_wrapper {
   background-color: #fff;
   padding: 1.5rem;
@@ -235,6 +239,7 @@ select {
   display: none;
 }
 .react-select__value-container {
+  overflow: visible !important;
   padding: 0 !important;
 }
 .react-select__control {
@@ -262,3 +267,31 @@ select {
   box-sizing: 'border-box';
   cursor: 'pointer';
 }
+
+.errorMessage {
+  opacity: 1;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+  color: white;
+  background: url(./images/messageError.svg) no-repeat;
+  background-size: cover;
+  width: 124px;
+  height: 37px;
+  top: -1.5rem;
+}
+.errorMessage-span {
+  font-family: 'LetoSans';
+  padding: 10px 15px 15px 15px;
+  font-size: 12px;
+  line-height: 14px;
+}
+/* .errorMessage::before {
+  content: '';
+  position: absolute;
+  
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+} */
