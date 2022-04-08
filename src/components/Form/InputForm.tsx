@@ -99,12 +99,22 @@ const InputForm: React.FC<InputProps> = ({
           : 'form_item'
       }>
       <span className='hide' ref={Ref}>
-        Введите Ваше {userValue}
+        {userValue === 'theme'
+          ? 'Выберите тему'
+          : userValue === 'email'
+          ? 'Введите email'
+          : 'Введите имя'}
       </span>
 
       {errors[userValue] && (
         <div className='errorMessage'>
-          <span className='errorMessage-span'>Введите {userValue}</span>
+          <span className='errorMessage-span'>
+            {userValue === 'theme'
+              ? 'Выберите тему'
+              : userValue === 'email'
+              ? 'Введите email'
+              : 'Введите имя'}
+          </span>
         </div>
       )}
       {userValue !== 'theme' ? (

@@ -1,14 +1,3 @@
-/* @font-face {
-  font-family: 'fontddce18b1f0804a5282c4d3917a826884';
-
-  src: url('https://nomail.com.ua/files/eot/ddce18b1f0804a5282c4d3917a826884.eot?#iefix')
-      format('embedded-opentype'),
-    url('https://nomail.com.ua/files/woff/ddce18b1f0804a5282c4d3917a826884.woff')
-      format('woff'),
-    url('https://nomail.com.ua/files/woff2/ddce18b1f0804a5282c4d3917a826884.woff2')
-      format('woff2');
-} */
-
 @font-face {
   font-family: 'LetoSans';
   src: local('LetoSans'),
@@ -315,9 +304,9 @@ select {
   justify-content: center;
   z-index: 1;
   color: white;
-  background: url(./images/messageError.svg) no-repeat;
-  background-size: cover;
-  width: 124px;
+  background: url(./images/messageError.svg) no-repeat center center;
+
+  width: max-content;
   height: 37px;
   top: -1.5rem;
 }
