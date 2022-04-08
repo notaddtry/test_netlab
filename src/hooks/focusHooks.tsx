@@ -48,17 +48,26 @@ export const useHandleFocus = () => {
   return { onFocus }
 }
 
-export const removeClasses = () => {
+export const resetHandler = (ref?: React.RefObject<HTMLInputElement>) => {
   const elementsToHide = Array.from(document.querySelectorAll('.hide'))
   const elementsToTransform = Array.from(
     document.querySelectorAll('.span-active')
   )
+  // const elementsInputWrapper = Array.from(
+  //   document.querySelectorAll('input[name]')
+  // )
   const elementSelect = document.querySelector('.react-select__single-value')
+
+  // ref?.current.value ===
 
   elementsToHide.map((element) => (element.className = 'hide'))
   elementsToTransform.map((element) => element.classList.remove('span-active'))
   if (elementSelect) {
-    elementSelect.className = 'react-select__placeholder'
+    // elementSelect.className = 'react-select__placeholder'
+    // const elementPlaceholder = document.querySelector(
+    //   '.react-select__placeholder'
+    // )
+    // console.log(elementPlaceholder)
     elementSelect.textContent = 'Тема сообщения'
   }
 }

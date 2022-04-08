@@ -65,6 +65,8 @@ const InputForm: React.FC<InputProps> = ({
   defaultValueSelect,
 }) => {
   const [checkedEmail, setCheckedEmail] = useState<boolean>(false)
+  // const [value, setValue] =
+  //   useState<string | number | readonly string[] | undefined>()
 
   const { onBlur } = useHandleBlur()
   const { onFocus } = useHandleFocus()
@@ -143,7 +145,6 @@ const InputForm: React.FC<InputProps> = ({
           autoComplete='off'
           placeholder={`Введите ваше ${userValue}`}
           type='text'
-          defaultValue={defaultValue}
         />
       ) : (
         <Controller
@@ -164,7 +165,7 @@ const InputForm: React.FC<InputProps> = ({
               isSearchable={false}
               className='react-select-container'
               classNamePrefix='react-select'
-              defaultValue={defaultValueSelect}
+              // defaultValue={defaultValueSelect}
               {...field}
               options={[
                 { value: '1First', label: 'Option 1' },

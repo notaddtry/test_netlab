@@ -7,9 +7,13 @@ import { editInfo } from '../../store/slices/userSlice'
 import { IAuthUser, IUser } from '../types/userType'
 
 import InputForm from './InputForm'
-import { removeClasses } from '../../hooks/focusHooks'
+import { resetHandler } from '../../hooks/focusHooks'
 
 const EditForm = () => {
+  const { firstName, email, message, theme } = useAppSelector(
+    (state) => state.user
+  )
+
   const {
     register,
     formState: { errors, dirtyFields },
@@ -19,7 +23,10 @@ const EditForm = () => {
     control,
   } = useForm<IAuthUser>({
     defaultValues: {
-      theme: undefined,
+      firstName,
+      email,
+      theme,
+      message,
     },
   })
 
@@ -39,23 +46,24 @@ const EditForm = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  const { firstName, email, message, theme } = useAppSelector(
-    (state) => state.user
-  )
-
   const onSubmit: SubmitHandler<IUser> = (data) => {
     if (data.theme === undefined) data.theme = theme
     const editedUser = { ...data, auth: true, id: Date.now().toString() }
 
     dispatch(editInfo(editedUser))
-    reset()
+    // reset()
     navigate('/')
   }
 
   const handleReset = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    removeClasses()
-    reset()
+    reset({
+      firstName: '',
+      email: '',
+      theme: { label: '', value: '' },
+      message: '',
+    })
+    resetHandler()
   }
 
   return (
@@ -72,7 +80,7 @@ const EditForm = () => {
             setUser={setUser}
             getValues={getValues('firstName')}
             userValue={'firstName'}
-            defaultValue={firstName || ''}
+            // defaultValue={firstName || ''}
           />
           <InputForm
             errors={errors}
@@ -84,7 +92,7 @@ const EditForm = () => {
             userValue={'email'}
             emailRegEx={emailRegEx}
             mail={user.email}
-            defaultValue={email || ''}
+            // defaultValue={email || ''}
           />
           <InputForm
             errors={errors}
@@ -95,7 +103,7 @@ const EditForm = () => {
             getValues={getValues('theme')}
             userValue={'theme'}
             control={control}
-            defaultValueSelect={theme || ''}
+            // defaultValueSelect={theme || ''}
           />
 
           <div className='form_item'>

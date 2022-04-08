@@ -7,7 +7,7 @@ import { addInfo } from '../../store/slices/userSlice'
 import { IAuthUser, IUser } from '../types/userType'
 
 import InputForm from './InputForm'
-import { removeClasses } from '../../hooks/focusHooks'
+import { resetHandler } from '../../hooks/focusHooks'
 
 const Form = () => {
   const {
@@ -46,14 +46,14 @@ const Form = () => {
       id: Date.now().toString(),
     }
     dispatch(addInfo(newUser))
-    reset()
+    // reset()
     navigate('/')
   }
 
   const handleReset = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
-    removeClasses()
+    resetHandler()
     reset()
   }
 
