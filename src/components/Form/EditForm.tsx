@@ -1,19 +1,40 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { editInfo } from '../../store/slices/userSlice'
-import { IUser } from '../types/userType'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { editInfo } from '../../store/slices/userSlice'
+
+import { IAuthUser, IUser } from '../types/userType'
+
+import InputForm from './InputForm'
+import { removeClasses } from '../../hooks/focusHooks'
 
 const EditForm = () => {
   const {
     register,
-    formState: { errors, isValid, isDirty },
+    formState: { errors, dirtyFields },
+    getValues,
     handleSubmit,
     reset,
-  } = useForm<IUser>({
-    mode: 'onBlur',
+    control,
+  } = useForm<IAuthUser>({
+    defaultValues: {
+      theme: undefined,
+    },
   })
+
+  const [user, setUser] = useState<IUser>({
+    email: null,
+    firstName: null,
+    theme: { label: null, value: null },
+    message: null,
+  })
+
+  const emailRef = useRef<HTMLSpanElement>(null)
+  const firstNameRef = useRef<HTMLSpanElement>(null)
+  const themeRef = useRef<HTMLSpanElement>(null)
+
+  const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
 
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
@@ -23,6 +44,7 @@ const EditForm = () => {
   )
 
   const onSubmit: SubmitHandler<IUser> = (data) => {
+    if (data.theme === undefined) data.theme = theme
     const editedUser = { ...data, auth: true, id: Date.now().toString() }
 
     dispatch(editInfo(editedUser))
@@ -30,78 +52,68 @@ const EditForm = () => {
     navigate('/')
   }
 
+  const handleReset = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    removeClasses()
+    reset()
+  }
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <button onClick={() => navigate(-1)}>Back to home</button>
-      <div className='input-field col s6'>
-        <input
-          {...register('firstName', {
-            minLength: {
-              value: 2,
-              message: 'Enter your name',
-            },
-          })}
-          placeholder='FirstName'
-          id='first_name'
-          type='text'
-          defaultValue={firstName || ''}
-          className='validate'
-        />
-        {errors?.firstName && (
-          <span style={{ color: 'red' }}>{errors.firstName.message}</span>
-        )}
-      </div>
-      <div className='input-field col s6'>
-        <input
-          {...register('email', {
-            pattern: {
-              value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-              message: 'Enter correct email',
-            },
-          })}
-          id='last_name'
-          type='text'
-          defaultValue={email || ''}
-          className='validate'
-          placeholder='email'
-        />
-        {errors?.email && (
-          <span style={{ color: 'red' }}>{errors?.email?.message}</span>
-        )}
-      </div>
+    <div className='wrapper'>
+      <form onSubmit={handleSubmit(onSubmit)} className='form_wrapper'>
+        <button onClick={() => navigate(-1)}>Back to home</button>
+        <div className='form_items'>
+          <span className={`title form_item`}>Форма для тебя</span>
+          <InputForm
+            errors={errors}
+            dirtyFields={dirtyFields}
+            Ref={firstNameRef}
+            register={register}
+            setUser={setUser}
+            getValues={getValues('firstName')}
+            userValue={'firstName'}
+            defaultValue={firstName || ''}
+          />
+          <InputForm
+            errors={errors}
+            dirtyFields={dirtyFields}
+            Ref={emailRef}
+            register={register}
+            setUser={setUser}
+            getValues={getValues('email')}
+            userValue={'email'}
+            emailRegEx={emailRegEx}
+            mail={user.email}
+            defaultValue={email || ''}
+          />
+          <InputForm
+            errors={errors}
+            dirtyFields={dirtyFields}
+            Ref={themeRef}
+            register={register}
+            setUser={setUser}
+            getValues={getValues('theme')}
+            userValue={'theme'}
+            control={control}
+            defaultValueSelect={theme || ''}
+          />
 
-      {/* <div>
-        <select
-          defaultValue={theme || 'default'}
-          className='browser-default'
-          {...register('theme', {
-            validate: (value) => value !== 'default' || 'Choose your theme',
-          })}>
-          <option value='default' disabled>
-            Choose your option
-          </option>
-          <option value='1'>Option 1</option>
-          <option value='2'>Option 2</option>
-          <option value='3'>Option 3</option>
-          Select a theme
-        </select>
-        {errors?.theme && (
-          <span style={{ color: 'red' }}>{errors?.theme?.message}</span>
-        )}
-      </div> */}
+          <div className='form_item'>
+            <textarea
+              defaultValue={message || ''}
+              {...register('message', { required: false })}
+              placeholder='Введите сообщение'></textarea>
+          </div>
+        </div>
 
-      <div className='input-field col s12'>
-        <textarea
-          {...register('message')}
-          id='textarea1'
-          className='materialize-textarea'
-          defaultValue={message || ''}
-          placeholder='textArea'
-        />
-      </div>
-
-      <input type='submit' className='btn' />
-    </form>
+        <div className='btns'>
+          <button className='btn_reset' onClick={(e) => handleReset(e)}>
+            Сбросить
+          </button>
+          <input type='submit' className='btn_submit' />
+        </div>
+      </form>
+    </div>
   )
 }
 

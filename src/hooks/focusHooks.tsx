@@ -1,5 +1,5 @@
-import { useForm, UseFormGetValues } from 'react-hook-form'
-import { IAuthUser, IUser } from '../components/types/userType'
+import { createElement } from 'react'
+import { IUser } from '../components/types/userType'
 
 export const useHandleBlur = () => {
   const onBlur = (
@@ -47,4 +47,19 @@ export const useHandleFocus = () => {
     }
   }
   return { onFocus }
+}
+
+export const removeClasses = () => {
+  const elementsToHide = Array.from(document.querySelectorAll('.hide'))
+  const elementsToTransform = Array.from(
+    document.querySelectorAll('.span-active')
+  )
+  const elementSelect = document.querySelector('.react-select__single-value')
+
+  elementsToHide.map((element) => (element.className = 'hide'))
+  elementsToTransform.map((element) => element.classList.remove('span-active'))
+  if (elementSelect) {
+    elementSelect.className = 'react-select__placeholder'
+    elementSelect.textContent = 'Тема сообщения'
+  }
 }

@@ -2,8 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAppSelector } from '../../store/hooks'
 
-import styles from './data.module.css'
-
 const Data = () => {
   const userData = useAppSelector((state) => state.user)
 
@@ -12,37 +10,33 @@ const Data = () => {
   return (
     <>
       {auth ? (
-        <div className={styles.wrapper}>
-          <div className={styles['info-wrapper']}>
-            <div className={styles.info}>
-              <span className={styles.title}>Form data:</span>
-              <span className={styles.infoItem}>
-                <strong>ФИО:</strong>
-                {firstName}
-              </span>
-              <span className={styles.infoItem}>
-                <strong>E-mail:</strong>
-                {email}
-              </span>
-              <span className={styles.infoItem}>
-                <strong>Тема:</strong>
-                {theme.label}
-              </span>
-            </div>
+        <div className='info-wrapper'>
+          <div className='info'>
+            <span className='info-title'>Form data:</span>
+            <span className='info-item'>
+              <strong>ФИО:</strong>
+              {firstName}
+            </span>
+            <span className='info-item'>
+              <strong>E-mail:</strong>
+              {email}
+            </span>
+            <span className='info-item'>
+              <strong>Тема:</strong>
+              {theme.label}
+            </span>
           </div>
-          <Link to='/form/edit' className={styles.btn}>
+          <Link to='/form/edit' className='info-btn'>
             Изменить
           </Link>
         </div>
       ) : (
-        <div className={styles.wrapper}>
-          <div className={styles['info-wrapper']}>
-            <div className={styles.info}>
-              <span className={styles.title}>Form data:</span>
-              <span className={styles.infoItem}>Форма пока не заполнена.</span>
-            </div>
+        <div className='info-wrapper'>
+          <div className='info'>
+            <span className='info-title'>Form data:</span>
+            <span className='info-item'>Форма пока не заполнена.</span>
           </div>
-          <Link to='/form' className={styles.btn}>
+          <Link to='/form' className='info-btn'>
             Заполнить форму
           </Link>
         </div>

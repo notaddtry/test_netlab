@@ -5,10 +5,6 @@ html {
   font-family: 'LetoSans';
 }
 
-a,
-button {
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -18,6 +14,41 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.info-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 230px;
+  margin: 4rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 0px 2rem 0px;
+  flex: 1 1 100%;
+}
+
+.info-title {
+  margin: 0px 0px 0.5rem 0px;
+}
+
+.info-item {
+  margin: 0px 0px 0.1rem 0px;
+}
+
+.info-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #13c98a;
+  border-radius: 44px;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  color: white;
+  padding: 1rem 0;
 }
 
 .wrapper {
@@ -175,15 +206,6 @@ select {
   margin: 0px 0px 1.5rem 0px;
 }
 
-.form_option {
-}
-
-.form_option-active {
-}
-
-.form_textarea {
-}
-
 .btns {
   width: 100%;
   display: flex;
@@ -213,8 +235,7 @@ select {
 .react-select-container {
   width: 100%;
 }
-.react-select {
-}
+
 .react-select__control {
   cursor: pointer !important;
   background-color: transparent !important;
@@ -253,6 +274,10 @@ select {
 .react-select__placeholder {
   font-size: 0.875rem;
   color: #9b99aa !important;
+  grid-area: 1/1/2/3;
+  margin-left: 2px;
+  margin-right: 2px;
+  box-sizing: border-box;
 }
 .react-select__option {
   cursor: pointer !important;
@@ -287,11 +312,3 @@ select {
   font-size: 12px;
   line-height: 14px;
 }
-/* .errorMessage::before {
-  content: '';
-  position: absolute;
-  
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-} */
