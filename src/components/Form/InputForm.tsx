@@ -50,10 +50,6 @@ interface InputProps {
   defaultValueSelect?: { label: string | null; value: string | null }
 }
 
-type CommonProps = {
-  clearValue: () => void
-}
-
 const InputForm: React.FC<InputProps> = ({
   errors,
   dirtyFields,

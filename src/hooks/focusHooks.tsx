@@ -1,4 +1,3 @@
-import { createElement } from 'react'
 import { IUser } from '../components/types/userType'
 
 export const useHandleBlur = () => {

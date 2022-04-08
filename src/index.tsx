@@ -9,7 +9,7 @@ import './index.css'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <Router basename='/test_netlab'>
       <Provider store={store}>
         <App />
       </Provider>

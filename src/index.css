@@ -1,5 +1,20 @@
-@import url(https://db.onlinewebfonts.com/c/0a90cc29dd090f34e4d86ee53e6c21ce?family=LetoSans+Regular);
-@import url(https://db.onlinewebfonts.com/c/33bce88f104fedc26d91518f6d8b4ca3?family=LetoSans+Bold);
+/* @font-face {
+  font-family: 'fontddce18b1f0804a5282c4d3917a826884';
+
+  src: url('https://nomail.com.ua/files/eot/ddce18b1f0804a5282c4d3917a826884.eot?#iefix')
+      format('embedded-opentype'),
+    url('https://nomail.com.ua/files/woff/ddce18b1f0804a5282c4d3917a826884.woff')
+      format('woff'),
+    url('https://nomail.com.ua/files/woff2/ddce18b1f0804a5282c4d3917a826884.woff2')
+      format('woff2');
+} */
+
+@font-face {
+  font-family: 'LetoSans';
+  src: local('LetoSans'),
+    url('https://nomail.com.ua/files/woff/ddce18b1f0804a5282c4d3917a826884.woff')
+      format('woff');
+}
 
 html {
   font-family: 'LetoSans';
