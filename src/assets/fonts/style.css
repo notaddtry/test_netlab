@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Leto Sans';
+    src: local('Leto Sans Regular'), local('Leto-Sans-Regular'),
+        url('LetoSans-Regular.woff2') format('woff2'),
+        url('LetoSans-Regular.woff') format('woff'),
+        url('LetoSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }

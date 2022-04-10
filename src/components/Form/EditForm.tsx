@@ -7,9 +7,8 @@ import { editInfo } from '../../store/slices/userSlice'
 import { IAuthUser, IUser } from '../types/userType'
 
 import InputForm from './InputForm'
-import { resetHandler } from '../../hooks/focusHooks'
 
-const EditForm = () => {
+const EditForm: React.FC = () => {
   const { firstName, email, message, theme } = useAppSelector(
     (state) => state.user
   )
@@ -19,7 +18,6 @@ const EditForm = () => {
     formState: { errors, dirtyFields },
     getValues,
     handleSubmit,
-    reset,
     control,
   } = useForm<IAuthUser>({
     defaultValues: {
@@ -41,7 +39,7 @@ const EditForm = () => {
   const firstNameRef = useRef<HTMLSpanElement>(null)
   const themeRef = useRef<HTMLSpanElement>(null)
 
-  const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
+  const emailRegEx = /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/g
 
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
@@ -51,19 +49,7 @@ const EditForm = () => {
     const editedUser = { ...data, auth: true, id: Date.now().toString() }
 
     dispatch(editInfo(editedUser))
-    // reset()
     navigate('/')
-  }
-
-  const handleReset = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
-    reset({
-      firstName: '',
-      email: '',
-      theme: { label: '', value: '' },
-      message: '',
-    })
-    resetHandler()
   }
 
   return (
@@ -80,7 +66,6 @@ const EditForm = () => {
             setUser={setUser}
             getValues={getValues('firstName')}
             userValue={'firstName'}
-            // defaultValue={firstName || ''}
           />
           <InputForm
             errors={errors}
@@ -92,7 +77,6 @@ const EditForm = () => {
             userValue={'email'}
             emailRegEx={emailRegEx}
             mail={user.email}
-            // defaultValue={email || ''}
           />
           <InputForm
             errors={errors}
@@ -103,7 +87,6 @@ const EditForm = () => {
             getValues={getValues('theme')}
             userValue={'theme'}
             control={control}
-            // defaultValueSelect={theme || ''}
           />
 
           <div className='form_item'>
@@ -115,9 +98,6 @@ const EditForm = () => {
         </div>
 
         <div className='btns'>
-          <button className='btn_reset' onClick={(e) => handleReset(e)}>
-            Сбросить
-          </button>
           <input type='submit' className='btn_submit' />
         </div>
       </form>

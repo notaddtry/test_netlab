@@ -1,12 +1,7 @@
-@font-face {
-  font-family: 'LetoSans';
-  src: local('LetoSans'),
-    url('https://nomail.com.ua/files/woff/ddce18b1f0804a5282c4d3917a826884.woff')
-      format('woff');
-}
+@import url('./assets/fonts/style.css');
 
 html {
-  font-family: 'LetoSans';
+  font-family: 'Leto Sans';
 }
 
 body {
@@ -56,7 +51,6 @@ code {
 }
 
 .wrapper {
-  font-family: 'Leto', sans-serif;
   height: 100vh;
   background-color: #474747;
   display: flex;
@@ -70,6 +64,11 @@ code {
 
 .noShow {
   opacity: 0 !important;
+}
+
+.not-choosen {
+  font-size: 14px !important;
+  color: #9b99aa !important;
 }
 
 .form_wrapper {
@@ -145,7 +144,7 @@ option {
   position: relative;
 }
 .input-error::after {
-  content: url(./images/error.svg);
+  content: url(./assets/images/error.svg);
   position: absolute;
   width: 1.5rem;
   height: 1.5rem;
@@ -157,7 +156,7 @@ option {
   position: relative;
 }
 .input-access::after {
-  content: url(./images/acces.svg);
+  content: url(./assets/images/acces.svg);
   position: absolute;
   width: 1.5rem;
   height: 1.5rem;
@@ -171,14 +170,10 @@ select:focus {
   box-shadow: 0px 4px 8px rgba(46, 9, 182, 0.06);
 }
 
-/* input:focus::placeholder {
-  transform: translate(10px);
-} */
-
 input::placeholder,
 textarea::placeholder,
 select {
-  font-family: 'Leto', sans-serif;
+  font-family: 'Leto Sans';
   font-size: 0.875rem;
   color: #9b99aa;
 }
@@ -187,7 +182,7 @@ select {
   display: inline-block;
 }
 .select:after {
-  content: url('./images/angle-arrow-down_icon-icons.com_73683.svg');
+  content: url('./assets/images/angle-arrow-down_icon-icons.com_73683.svg');
   height: 10px;
   width: 10px;
   position: absolute;
@@ -292,7 +287,6 @@ select {
 .option {
   padding: 14px;
   border-bottom: 1px solid #f4f2f7;
-  /* background-color: black' : 'white'; */
   box-sizing: 'border-box';
   cursor: 'pointer';
 }
@@ -304,7 +298,7 @@ select {
   justify-content: center;
   z-index: 1;
   color: white;
-  background: url(./images/messageError.svg) no-repeat center center;
+  background: url(./assets/images/messageError.svg) no-repeat center center;
 
   width: max-content;
   height: 37px;

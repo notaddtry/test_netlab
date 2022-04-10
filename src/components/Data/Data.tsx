@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAppSelector } from '../../store/hooks'
 
-const Data = () => {
+const Data: React.FC = () => {
   const userData = useAppSelector((state) => state.user)
 
   const { email, firstName, theme, auth } = userData

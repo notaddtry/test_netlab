@@ -9,7 +9,7 @@ import { IAuthUser, IUser } from '../types/userType'
 import InputForm from './InputForm'
 import { resetHandler } from '../../hooks/focusHooks'
 
-const Form = () => {
+const Form: React.FC = () => {
   const {
     register,
     formState: { errors, dirtyFields },
@@ -17,11 +17,7 @@ const Form = () => {
     handleSubmit,
     reset,
     control,
-  } = useForm<IAuthUser>({
-    defaultValues: {
-      theme: undefined,
-    },
-  })
+  } = useForm<IAuthUser>()
 
   const [user, setUser] = useState<IUser>({
     email: null,
@@ -37,7 +33,7 @@ const Form = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
+  const emailRegEx = /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/g
 
   const onSubmit: SubmitHandler<IAuthUser> = (data) => {
     const newUser = {
@@ -45,14 +41,13 @@ const Form = () => {
       auth: true,
       id: Date.now().toString(),
     }
+
     dispatch(addInfo(newUser))
-    // reset()
     navigate('/')
   }
 
   const handleReset = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-
     resetHandler()
     reset()
   }

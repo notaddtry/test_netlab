@@ -61,12 +61,9 @@ const InputForm: React.FC<InputProps> = ({
   emailRegEx,
   mail,
   control,
-  defaultValue,
   defaultValueSelect,
 }) => {
   const [checkedEmail, setCheckedEmail] = useState<boolean>(false)
-  // const [value, setValue] =
-  //   useState<string | number | readonly string[] | undefined>()
 
   const { onBlur } = useHandleBlur()
   const { onFocus } = useHandleFocus()
@@ -75,6 +72,7 @@ const InputForm: React.FC<InputProps> = ({
     if (userValue === 'email') {
       setCheckedEmail(emailRegEx!.test(mail!))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mail])
 
   return (
@@ -131,7 +129,7 @@ const InputForm: React.FC<InputProps> = ({
                 }
               : {
                   pattern: {
-                    value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+                    value: /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/g,
                     message: 'Enter correct email',
                   },
                   validate: (value: string | null) =>
@@ -165,7 +163,6 @@ const InputForm: React.FC<InputProps> = ({
               isSearchable={false}
               className='react-select-container'
               classNamePrefix='react-select'
-              // defaultValue={defaultValueSelect}
               {...field}
               options={[
                 { value: '1First', label: 'Option 1' },
