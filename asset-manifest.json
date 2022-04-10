@@ -1,19 +1,22 @@
 {
   "files": {
-    "main.css": "/test_netlab/static/css/main.da24268e.css",
-    "main.js": "/test_netlab/static/js/main.c6d408d4.js",
-    "static/js/48.72ed52a4.chunk.js": "/test_netlab/static/js/48.72ed52a4.chunk.js",
+    "main.css": "/test_netlab/static/css/main.988ae9d6.css",
+    "main.js": "/test_netlab/static/js/main.b14e872b.js",
+    "static/js/48.8683e5bd.chunk.js": "/test_netlab/static/js/48.8683e5bd.chunk.js",
+    "static/media/LetoSans-Regular.ttf": "/test_netlab/static/media/LetoSans-Regular.d31048b1041e1574c944.ttf",
+    "static/media/LetoSans-Regular.woff": "/test_netlab/static/media/LetoSans-Regular.6d780ca26d32deb167da.woff",
+    "static/media/LetoSans-Regular.woff2": "/test_netlab/static/media/LetoSans-Regular.7c20b57d0b14f2c2ff35.woff2",
     "static/media/acces.svg": "/test_netlab/static/media/acces.0f85cd46787aaf8cc9ff.svg",
     "static/media/error.svg": "/test_netlab/static/media/error.9419e72e0fac0d13eb98.svg",
     "static/media/angle-arrow-down_icon-icons.com_73683.svg": "/test_netlab/static/media/angle-arrow-down_icon-icons.com_73683.7547b01bfab125623dec.svg",
     "index.html": "/test_netlab/index.html",
     "static/media/messageError.svg": "/test_netlab/static/media/messageError.c85a8d4ea2b4ce627f3a.svg",
-    "main.da24268e.css.map": "/test_netlab/static/css/main.da24268e.css.map",
-    "main.c6d408d4.js.map": "/test_netlab/static/js/main.c6d408d4.js.map",
-    "48.72ed52a4.chunk.js.map": "/test_netlab/static/js/48.72ed52a4.chunk.js.map"
+    "main.988ae9d6.css.map": "/test_netlab/static/css/main.988ae9d6.css.map",
+    "main.b14e872b.js.map": "/test_netlab/static/js/main.b14e872b.js.map",
+    "48.8683e5bd.chunk.js.map": "/test_netlab/static/js/48.8683e5bd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.da24268e.css",
-    "static/js/main.c6d408d4.js"
+    "static/css/main.988ae9d6.css",
+    "static/js/main.b14e872b.js"
   ]
 }
